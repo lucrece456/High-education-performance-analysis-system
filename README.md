@@ -52,3 +52,31 @@ The **Higher Education Performance Analysis System** offers the following featur
    ```bash
    git clone https://github.com/lucrece456/Higher-Education-Performance-Analysis-System.git
 
+Set up the Python environment:
+Create a virtual environment and install the required dependencies using requirements.txt:
+
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+
+Run the Application:
+python app.py
+
+Access the Application:
+Open your browser and navigate to http://localhost:5000 to use the system.
+Proposed Future Enhancements
+
+Implementation of machine learning models for predicting student performance.
+Expanding communication channels to include real-time notifications.
+Adding customizable dashboards for teachers and students.
+Improving reporting tools with visual data analytics.
+Contact Information
+
+For any questions or collaboration, feel free to contact me:
+
+Helen Chris
+Email: Chrishelen410@gmail.com
+
+License
+
+This project is open for collaboration and educational purposes under the MIT License.
