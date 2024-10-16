@@ -1,0 +1,38 @@
+/* vp.css */
+
+/* Profile Information */
+#profile-information {
+    margin-top: 20px;
+}
+
+.profile-item {
+    margin-bottom: 15px;
+}
+
+.profile-item label {
+    font-weight: bold;
+}
+
+/* Image Upload */
+#profile-image {
+    margin-top: 10px;
+}
+
+#upload-button {
+    margin-top: 5px;
+    padding: 8px 12px;
+    background-color: navy;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#upload-progress {
+    margin-top: 5px;
+    width: 100%;
+}
+
+#upload-message {
+    margin-top: 5px;
+}

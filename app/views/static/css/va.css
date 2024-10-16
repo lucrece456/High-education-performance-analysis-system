@@ -1,0 +1,35 @@
+/* Apply styles to the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  /* Apply styles to table headers */
+  th {
+    background-color: #f2f2f2;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  /* Apply alternating background color to table rows */
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Apply styles to table cells */
+  td {
+    padding: 8px;
+  }
+  
+  /* Apply styles to main content section */
+  #attendance-section {
+    margin-top: 20px;
+  }
+  
+  /* Apply styles to h1 heading */
+  h1 {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  

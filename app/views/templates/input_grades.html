@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Input Grades</title>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/grades.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+<div class="container">
+    <h2>Input Grades</h2>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="post">
+        <div class="form-group">
+            <label for="student_id">Student ID:</label>
+            <select name="student_id" id="student_id" class="form-control">
+                {% for student in students %}
+                    <option value="{{ student.student_id }}">{{ student.first_name }} {{ student.last_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="course_id">Course ID:</label>
+            <select name="course_id" id="course_id" onchange="updateModules()" class="form-control">
+                {% for course in courses %}
+                    <option value="{{ course.course_id }}">{{ course.course_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="module_id">Module ID:</label>
+            <select name="module_id" id="module_id" class="form-control">
+                {% for module in modules %}
+                    <option value="{{ module.module_id }}">{{ module.module_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="assignment_id">Assignment ID:</label>
+            <select name="assignment_id" id="assignment_id" class="form-control">
+                {% for assignment in assignments %}
+                    <option value="{{ assignment.id }}">{{ assignment.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="grade">Grade:</label>
+            <input type="text" name="grade" id="grade" class="form-control">
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+</div>
+
+<script>
+    function updateModules() {
+        var selectedCourseId = document.getElementById("course_id").value;
+        window.location.href = "/input_grades?course_id=" + selectedCourseId;
+    }
+</script>
+{% endblock %}
+
+

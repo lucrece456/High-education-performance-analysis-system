@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Communication - HEPAS{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/comm.css') }}">
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <h2 class="text-center">Communication</h2>
+                </div>
+                <div class="card-body">
+                    <p class="lead">Welcome to the communication page. Here you can send messages to other users.</p>
+                    <form action="{{ url_for('communication.send_message') }}" method="post">
+                        <div class="form-group">
+                            <label for="recipient">Recipient:</label>
+                            <select id="recipient" name="recipient" class="form-control">
+                                <optgroup label="Teachers">
+                                    {% for username in teacher_usernames %}
+                                    <option value="{{ username }}">{{ username }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                                <optgroup label="Administrators">
+                                    {% for username in administrator_usernames %}
+                                    <option value="{{ username }}">{{ username }}</option>
+                                    {% endfor %}
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" class="form-control" rows="5"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

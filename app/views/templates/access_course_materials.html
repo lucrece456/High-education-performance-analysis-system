@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Access Course Materials</title>
+{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Acm.css') }}">
+
+    <!-- Main content section -->
+    <main class="container">
+        <!-- Homepage: Display module code, course details, etc. -->
+        <section id="homepage">
+            {% for module_code, course_name in module_data %}
+            <h1>Module Code: {{ module_code }}</h1>
+            <p>Course Name: {{ course_name }}</p>
+            
+            <!-- Add other relevant course/module details here -->
+            {% endfor %}
+        </section>
+
+        <!-- Request Assistance Section -->
+        <section id="request-assistance">
+            <h2>Request Assistance</h2>
+            <p>
+                If you need assistance, please communicate with your teacher.
+                <!-- Add instructions or guidelines for requesting assistance -->
+                <a href="{{ url_for('communication.get_communications') }}">Contact Teacher</a>
+            </p>
+        </section>
+
+        <!-- Module Assignments Section -->
+        <section id="module-assignments">
+            <h2>Module Assignments</h2>
+            <ul class="assignment-list">
+                <!-- Display a list of assignments for the module -->
+                {% for assignment in assignments %}
+                <li><a href="{{ assignment.pdf_link }}" class="assignment-link">{{ assignment.title }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <!-- Course Materials Section -->
+        <section id="course-materials">
+            <h2>Course Materials</h2>
+            <div class="material-links">
+                <!-- Add links to course materials or resources -->
+                <a href="#" class="material-link">Lecture Slides</a>
+                <a href="#" class="material-link">Reading Materials</a>
+                <!-- Add more links as needed -->
+            </div>
+        </section>
+    </main>
+{% endblock %}

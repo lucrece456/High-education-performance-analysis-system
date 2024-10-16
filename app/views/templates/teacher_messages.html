@@ -1,0 +1,35 @@
+<!-- teacher_messages.html -->
+{% extends "base.html" %}
+
+{% block title %}
+    <title>Teacher Messages</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <h2 class="text-center">Teacher Messages</h2>
+                    </div>
+                    <div class="card-body">
+                        {% if messages %}
+                            <ul class="list-group">
+                                {% for message in messages %}
+                                    <li class="list-group-item">
+                                        <p><strong>From:</strong> {{ message.sender.username }}</p>
+                                        <p><strong>Date:</strong> {{ message.date }}</p>
+                                        <p><strong>Message:</strong> {{ message.message }}</p>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p class="lead">No messages available.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

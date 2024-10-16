@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>View Profile</title>
+{% endblock %}
+
+{% block content %}
+    <main>
+        <section id="profile-information">
+            <h1>Profile Information</h1>
+            <div class="profile-item">
+                <label>Name:</label>
+                <p>{{ user.first_name }} {{ user.last_name }}</p>
+            </div>
+            <div class="profile-item">
+                <label>Email:</label>
+                <p>{{ user.email }}</p>
+            </div>
+            <div class="profile-item">
+                <label>Date of Birth:</label>
+                <p>{{ user.date_of_birth }}</p>
+            </div>
+        </section>
+
+            <!-- Add other profile information as needed -->
+
+            <!-- Image Upload -->
+            <section id="profile-information">
+                <h1>Profile Information</h1>
+                <!-- Profile Information Items -->
+            </section>
+        
+            <section id="profile-image">
+                <h2>Profile Image</h2>
+                <div class="profile-image-card">
+                    <img id="profile-image" src="{{ url_for('static', filename='images/default-profile-image.jpg') }}" alt="Profile Image">
+                    <input type="file" id="image-upload" accept="image/*">
+                    <label for="image-upload" id="upload-button">Upload Image</label>
+                    <progress id="upload-progress" max="100" value="0"></progress>
+                    <p id="upload-message"></p>
+                </div>
+            </section>
+    </main>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var imageUpload = document.getElementById('image-upload');
+            var profileImage = document.getElementById('profile-image');
+            var uploadProgress = document.getElementById('upload-progress');
+            var uploadMessage = document.getElementById('upload-message');
+    
+            imageUpload.addEventListener('change', function() {
+                var file = this.files[0];
+                var reader = new FileReader();
+    
+                reader.onload = function(event) {
+                    profileImage.src = event.target.result;
+                };
+    
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/vp.css') }}">
+{% endblock %}

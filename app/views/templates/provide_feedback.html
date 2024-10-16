@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>View Feedback</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>View Feedback</h2>
+    <!-- Debugging information -->
+    <h3>Student Information:</h3>
+    <p>{{ student }}</p>
+    <h3>Feedback Information:</h3>
+    <p>{{ feedback }}</p>
+
+    <!-- Actual feedback display -->
+    <h3>{{ student.first_name }} {{ student.last_name }}</h3>
+    <ul>
+        {% for fb in feedback %}
+        <li>{{ fb.feedback_text }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

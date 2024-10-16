@@ -1,0 +1,40 @@
+.container {
+    max-width: 600px; /* Limit width to ensure readability */
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px; /* Add some padding for breathing room */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Add space between form elements */
+}
+
+label {
+    font-weight: bold; /* Make labels bold for emphasis */
+}
+
+input[type="text"],
+select {
+    width: 100%; /* Make inputs fill their parent container */
+    padding: 8px; /* Add padding for input fields */
+    font-size: 16px; /* Set a readable font size */
+}
+
+.btn-primary {
+    background-color: navy; /* Set primary button color */
+    color: white; /* Set text color for contrast */
+    padding: 10px 20px; /* Add padding to buttons */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Add slight border radius for a softer look */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.btn-primary:hover {
+    background-color: #001f3f; /* Darken button color on hover */
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+

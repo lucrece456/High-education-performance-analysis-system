@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Teacher Dashboard{% endblock %}
+
+{% block content %}
+
+
+<div class="col-md-9">
+    <!-- Main Content -->
+    <h2>Welcome to the Teacher Dashboard, {{ session['last_name'] }}!</h2>
+    <!-- Additional content goes here -->
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Sidebar content -->
+                <h3>Dashboard Menu</h3>
+                <ul>
+                    <li><a href="{{ url_for('module.get_modules') }}">My Modules</a></li>
+                    <li><a href="{{ url_for('input_grades.input_grades') }}">Input Grades</a></li>
+                    <li><a href="{{ url_for('give_feedback.give_feedback') }}">Give Feedback</a></li>
+                    <li><a href="{{ url_for('view_performance_analysis.view_performance_analysis') }}">View Performance Analysis</a></li>
+                    <li><a href="{{ url_for('communication.teacher_messages') }}">Communication</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-9">
+
+            <!-- Display Modules -->
+            <div class="row">
+                {% for module in modules %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ module.module_name }}</h5>
+                            <p class="card-text">Course: {{ module.course_name }}</p>
+                            <!-- Add any other relevant module details here -->
+                            <a href="{{ url_for('module.edit_module', module_id=module.module_id) }}" class="btn btn-primary">Edit Module</a>
+                            <a href="{{ url_for('module.delete_module', module_id=module.module_id) }}" class="btn btn-danger">Delete Module</a>
+                            <a href="{{ url_for('module.create_assignment', module_id=module.module_id) }}" class="btn btn-success">Create Assignment</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- End Display Modules -->
+        </div>
+    </div>
+</div>
+
+<!-- Link to CSS file -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/studentD.css') }}">
+{% endblock %}

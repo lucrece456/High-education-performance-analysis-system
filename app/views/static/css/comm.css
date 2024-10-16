@@ -1,0 +1,44 @@
+/* Overall Styling */
+
+.card {
+    border: 1px solid #ccc; /* Add a subtle border around cards */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a slight shadow for depth */
+}
+
+.card-header {
+    background-color: navy; /* Set card header background color */
+    color: white; /* Set card header text color */
+    padding: 15px; /* Add padding to the card header */
+    border-top-left-radius: 10px; /* Add rounded corners to the top left */
+    border-top-right-radius: 10px; /* Add rounded corners to the top right */
+}
+
+.card-body {
+    padding: 20px; /* Add padding to the card body */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Add space between form elements */
+}
+
+label {
+    font-weight: bold; /* Make labels bold for emphasis */
+}
+
+textarea.form-control {
+    resize: vertical; /* Allow vertical resizing of textarea */
+}
+
+.btn-primary {
+    background-color: navy; /* Set primary button color */
+    color: white; /* Set text color for contrast */
+    padding: 10px 20px; /* Add padding to buttons */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Add slight border radius for a softer look */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.btn-primary:hover {
+    background-color: #001f3f; /* Darken button color on hover */
+}

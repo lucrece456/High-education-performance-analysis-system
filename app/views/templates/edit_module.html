@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Edit Module{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/edit.css') }}">
+
+    <h1>Edit Module</h1>
+    <a href="{{ url_for('manage_modules.get_modules') }}">Back to Modules</a>
+
+    <!-- Edit Module Form -->
+    <form action="{{ url_for('manage_modules.edit_module', module_id=module.module_id) }}" method="post">
+        <label for="module_name">Module Name:</label>
+        <input type="text" id="module_name" name="module_name" value="{{ module.module_name }}" required>
+        <label for="course_id">Course ID:</label>
+        <input type="number" id="course_id" name="course_id" value="{{ module.course_id }}" required>
+        <label for="module_code">Module Code:</label>
+        <input type="text" id="module_code" name="module_code" value="{{ module.module_code }}" required>
+        <button type="submit">Update Module</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,45 @@
+<!-- app/templates/view_performance_analysis.html -->
+{% extends "base.html" %}
+
+{% block title %}Performance Analysis{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/pas.css') }}">
+
+<div class="container">
+    <!-- Include Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <h1 class="page-title">Performance Analysis</h1>
+    <!-- Container for Graphs -->
+    <div id="gradeGraph" class="chart-container"></div>
+
+    <script>
+        // Parse JSON string to JavaScript object
+        var performance_level_chart = JSON.parse('{{ performance_level_chart_json | safe }}');
+
+        // Extract x and y data from the performance_level_chart
+        var x_values = performance_level_chart.x;
+        var y_values = performance_level_chart.y;
+
+        // Create a bar chart using Plotly.js
+        var data = [{
+            x: x_values,
+            y: y_values,
+            type: 'bar'
+        }];
+
+        var layout = {
+            title: 'Performance Analysis',
+            xaxis: {
+                title: 'Students'
+            },
+            yaxis: {
+                title: 'Performance Level'
+            }
+        };
+
+        Plotly.newPlot('gradeGraph', data, layout);
+    </script>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+/* Apply consistent font family */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Style the table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Style the charts canvas */
+#performanceChart,
+#gradeDistributionChart,
+#gradeTrendsChart {
+    margin-top: 20px;
+    width: 600px; /* Adjust width as needed */
+    height: 400px; /* Adjust height as needed */
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+/* Container styling */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}

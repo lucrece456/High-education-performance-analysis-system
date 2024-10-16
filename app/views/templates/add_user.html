@@ -1,0 +1,89 @@
+<!-- templates/admin/add_user.html -->
+{% extends "base.html" %}
+
+{% block title %}
+  Add User - Admin
+{% endblock %}
+
+{% block content %}
+<main class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title">Add User</h2>
+          {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+              <div class="alert alert-danger">
+                {% for category, message in messages %}
+                  {{ message }}
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endwith %}
+          <form action="{{ url_for('admin.add_user') }}" method="post">
+            <div class="form-group">
+              <label for="user_type">User Type:</label>
+              <select id="user_type" name="user_type" class="form-control" required>
+                <option value="">Select user type</option>
+                <option value="student">Student</option>
+                <option value="teacher">Teacher</option>
+                <option value="administrator">Administrator</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" id="username" name="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="first_name">First Name:</label>
+              <input type="text" id="first_name" name="first_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="last_name">Last Name:</label>
+              <input type="text" id="last_name" name="last_name" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+            <div id="student_fields" style="display: none;">
+              <div class="form-group">
+                <label for="date_of_birth">Date of Birth:</label>
+                <input type="date" id="date_of_birth" name="date_of_birth" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="level">Level:</label>
+                <input type="text" id="level" name="level" class="form-control">
+              </div>
+            </div>
+            <div id="teacher_fields" style="display: none;">
+              <div class="form-group">
+                <label for="specialization">Specialization:</label>
+                <input type="text" id="specialization" name="specialization" class="form-control">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add User</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>
+document.getElementById('user_type').addEventListener('change', function() {
+  var userType = this.value;
+  document.getElementById('student_fields').style.display = (userType == 'student') ? 'block' : 'none';
+  document.getElementById('teacher_fields').style.display = (userType == 'teacher') ? 'block' : 'none';
+});
+</script>
+{% endblock %}

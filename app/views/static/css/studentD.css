@@ -1,0 +1,44 @@
+/* studentD.css */
+
+/* Style for the sidebar */
+.sidebar {
+    background-color: #f4f4f4;
+    padding: 20px;
+    font-size: 16px; /* Adjust font size */
+}
+
+/* Style for the links */
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    display: block;
+    padding: 8px; /* Adjust padding as needed */
+    background-color: #ddd;
+    color: #333;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #aaa;
+    color: #fff;
+}
+
+/* Adjustments for the main content */
+.container {
+    margin-top: 20px; /* Adjust margin top */
+}
+
+.container h2,
+.container p {
+    font-size: 18px; /* Adjust font size */
+    margin-bottom: 15px; /* Adjust margin bottom */
+}

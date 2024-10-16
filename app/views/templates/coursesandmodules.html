@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses and Modules</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Courses and Modules</h1>
+        <ul>
+            {% for course in courses %}
+            <li>{{ course.name }}</li>
+            <ul>
+                {% for module in course.modules %}
+                <li>{{ module.name }}</li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

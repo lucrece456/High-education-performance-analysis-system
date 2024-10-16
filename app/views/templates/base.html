@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}HEPAS{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('login.login') }}">Login</a></li>
+                <li><a href="{{ url_for('home.home') }}">Home</a></li>
+                <li>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Search...">
+                        <button type="submit"><i class="fas fa-search"></i></button>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Navigation Buttons -->
+    <div class="navigation-buttons">
+        {% block navigation %}
+            <!-- Insert navigation buttons here -->
+            <a href="#" onclick="goBack()" class="btn-back">Back</a>
+        {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 HEPAS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var searchInput = document.getElementById('searchInput');
+
+            searchInput.addEventListener('input', function() {
+                var searchValue = this.value.trim().toLowerCase();
+                var navLinks = document.querySelectorAll('nav ul li a');
+
+                navLinks.forEach(function(link) {
+                    var textContent = link.textContent.trim().toLowerCase();
+                    if (textContent.includes(searchValue)) {
+                        link.style.display = 'block';
+                    } else {
+                        link.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        function goBack() {
+            console.log("Going back...");
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

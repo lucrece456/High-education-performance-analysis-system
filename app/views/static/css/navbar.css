@@ -1,0 +1,86 @@
+/* Navbar styling */
+nav {
+    background-color: navy;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0; /* Remove right margin for the last list item */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px; /* Added padding for clickable area */
+    border-radius: 3px; /* Slightly rounded corners */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+}
+
+nav ul li a:hover {
+    background-color: darkblue;
+    color: #ddd;
+}
+
+.search-container {
+    display: inline-block;
+    position: relative; /* Required for absolute positioning of the button */
+}
+
+.search-container input[type=text] {
+    width: 150px;
+    padding: 8px;
+    margin-right: 5px;
+    border: none; /* Remove default border */
+    border-radius: 3px; /* Slightly rounded corners */
+}
+
+.search-container button {
+    padding: 8px 12px;
+    background-color: darkblue;
+    color: white;
+    border: none;
+    border-radius: 3px; /* Slightly rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* Smooth transitions */
+    position: absolute; /* Position button absolutely within the container */
+    top: 0;
+    right: 0;
+    height: 100%; /* Make button height match input height */
+}
+
+.search-container button:hover {
+    background-color: navy;
+    color: #ddd;
+}
+
+.navigation-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.navigation-buttons .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: navy;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.navigation-buttons .btn:hover {
+    background-color: #001f3f;
+}

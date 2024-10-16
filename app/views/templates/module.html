@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Modules{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h2 class="text-center mb-4">My Modules</h2>
+    <div class="row">
+        <!-- Display modules -->
+        {% for module in modules %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    {{ module.module_name }}
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Course Code: {{ module.course_code }}</h5>
+                    <!-- Display assignments -->
+                    {% for assignment in module.assignments %}
+                    <div class="assignment-details">
+                        <p>Assignment: {{ assignment.title }}</p>
+                        <p>Due Date: {{ assignment.due_date }}</p>
+                        <p>Schedule Date: {{ assignment.schedule }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- Link to create assignment -->
+            <div class="text-center mt-4">
+                <a href="{{ url_for('module.create_assignment', module_id=module.module_id) }}" class="btn btn-primary">Create Assignment</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/con1.css') }}">
+{% endblock %}

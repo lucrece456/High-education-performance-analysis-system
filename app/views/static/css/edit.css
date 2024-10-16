@@ -1,0 +1,44 @@
+/* Apply consistent font families */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Center the form */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Style form labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Style form inputs */
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Style submit button */
+button[type="submit"] {
+    background-color: navy;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Change button color on hover */
+button[type="submit"]:hover {
+    background-color: #001f3f;
+}

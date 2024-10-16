@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Create Assignment{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/CA.css') }}">
+
+<div class="container">
+    <h2>Create Assignment</h2>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="module">Module Name:</label>
+            <select class="form-control" id="module" name="module">
+                {% for module in modules %}
+                    <option value="{{ module.id }}">{{ module.module_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Enter assignment title">
+        </div>
+        
+        <div class="form-group">
+            <label for="schedule">Schedule:</label>
+            <input type="datetime-local" class="form-control" id="schedule" name="schedule">
+        </div>
+        <div class="form-group">
+            <label for="students">Assign to:</label>
+            <select class="form-control" id="students" name="students">
+                <option value="all">All Students</option>
+                <option value="select">Select Number of Students</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="grading">Grading:</label>
+            <select class="form-control" id="grading" name="grading">
+                <option value="graded">Graded</option>
+                <option value="ungraded">Ungraded</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="due_date">Due Date:</label>
+            <input type="date" class="form-control" id="due_date" name="due_date">
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea class="form-control" id="description" name="description" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="attachment">Attachment:</label>
+            <input type="file" class="form-control-file" id="attachment" name="attachment">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Assignment</button>
+    </form>
+</div>
+{% endblock %}

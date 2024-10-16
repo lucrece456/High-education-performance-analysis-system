@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}View Grades{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/vg.css') }}">
+
+<div class="container">
+    <h2>My Grades</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Assignment</th>
+                <th>Grade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for grade in grades %}
+            <tr>
+                <td>{{ assignment_titles[grade.assignment_id] }}</td>
+                <td>{{ grade.grade }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Overall Performance</h2>
+    <p>Suggestion: {{ suggestion }}</p>
+
+    <!-- Bar Chart for Overall Performance -->
+    <canvas id="performanceChart"></canvas>
+
+    <!-- Pie Chart for Grade Distribution -->
+    <canvas id="gradeDistributionChart"></canvas>
+
+    <!-- Line Chart for Grade Trends -->
+    <canvas id="gradeTrendsChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Data for Overall Performance
+    var overallPerformanceCtx = document.getElementById('performanceChart').getContext('2d');
+    var assignments = Object.keys({{ overall_performance|tojson }});
+    var scores = Object.values({{ overall_performance|tojson }});
+
+    var performanceChart = new Chart(overallPerformanceCtx, {
+        type: 'bar',
+        data: {
+            labels: assignments,
+            datasets: [{
+                label: 'Overall Performance',
+                data: scores,
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Data for Grade Distribution
+    var gradeDistributionCtx = document.getElementById('gradeDistributionChart').getContext('2d');
+    var gradeLabels = ['A', 'B', 'C', 'D', 'F'];
+    var gradeCounts = {
+        'A': 0,
+        'B': 0,
+        'C': 0,
+        'D': 0,
+        'F': 0
+    };
+
+    {% for grade in grades %}
+    var gradeValue = parseFloat('{{ grade.grade }}');
+    if (gradeValue >= 90) {
+        gradeCounts['A']++;
+    } else if (gradeValue >= 80) {
+        gradeCounts['B']++;
+    } else if (gradeValue >= 70) {
+        gradeCounts['C']++;
+    } else if (gradeValue >= 60) {
+        gradeCounts['D']++;
+    } else {
+        gradeCounts['F']++;
+    }
+    {% endfor %}
+
+    var gradeDistributionChart = new Chart(gradeDistributionCtx, {
+        type: 'pie',
+        data: {
+            labels: gradeLabels,
+            datasets: [{
+                label: 'Grade Distribution',
+                data: Object.values(gradeCounts),
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(255, 99, 132, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    // Data for Grade Trends
+    var gradeTrendsCtx = document.getElementById('gradeTrendsChart').getContext('2d');
+    var gradeTrends = {
+        labels: [],
+        data: []
+    };
+
+    {% for grade in grades %}
+    gradeTrends.labels.push('{{ assignment_titles[grade.assignment_id] }}');
+    gradeTrends.data.push(parseFloat('{{ grade.grade }}'));
+    {% endfor %}
+
+    var gradeTrendsChart = new Chart(gradeTrendsCtx, {
+        type: 'line',
+        data: {
+            labels: gradeTrends.labels,
+            datasets: [{
+                label: 'Grade Trends',
+                data: gradeTrends.data,
+                backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                borderColor: 'rgba(153, 102, 255, 1)',
+                borderWidth: 1,
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+/* Apply consistent font families */
+/* Add margin to the top and bottom of the container */
+.container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Center the heading */
+h2 {
+    text-align: center;
+}
+
+/* Style form labels */
+label {
+    font-weight: bold;
+}
+
+/* Style form inputs */
+.form-control {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Style the textarea */
+textarea.form-control {
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* Style submit button */
+.btn-primary {
+    background-color: navy;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Change button color on hover */
+.btn-primary:hover {
+    background-color: #001f3f;
+}

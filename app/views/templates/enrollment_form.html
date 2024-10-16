@@ -1,0 +1,35 @@
+<!-- enrollment_form.html -->
+{% extends "base.html" %}
+
+{% block title %}Enrollment Form{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h2>Enrollment Form</h2>
+    <form id="enrollmentForm" method="POST">
+        <div class="form-group">
+            <label for="studentSelect">Select Student:</label>
+            <select class="form-control" id="studentSelect" name="student_id">
+                <!-- Populate with students from the database -->
+                {% for student in students %}
+                <option value="{{ student.student_id }}">{{ student.first_name }} {{ student.last_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="courseSelect">Select Course:</label>
+            <select class="form-control" id="courseSelect" name="course_id">
+                <!-- Populate with courses from the database -->
+                {% for course in courses %}
+                <option value="{{ course.course_id }}">{{ course.course_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Enroll Student</button>
+    </form>
+</div>
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/grades.css') }}">
+
+{% endblock %}
